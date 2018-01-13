@@ -4,7 +4,7 @@
 
 # Imports
 import tweepy
-import pickle
+import json
 import codecs
 import time
 
@@ -16,6 +16,9 @@ users['democrats'] = [u"HillaryClinton", u"BillClinton", u"BarackObama", u"SenBo
 users['republicans'] = [u"realDonaldTrump", u"marcorubio", u"JeffFlake", u"RandPaul", u"lisamurkowski", u"SenToomey",
                         u"SenJohnMcCain", u"tedcruz", u"ChuckGrassley", u"SenatorCollins", u"SenDeanHeller", u"JerryMoran",
                         u"SenatorTimScott", u"SenTomCotton", u"senrobportman"]
+
+# Test senators
+test = [u"SenJohnThune", u"SenatorEnzi", u"SteveFarleyAZ", u"JanetBewley4WI"]
 
 
 # Twitter API credentials
@@ -34,6 +37,8 @@ api = tweepy.API(auth)
 # Data set
 X = list()
 Y = list()
+test_name = list()
+test_X = list()
 
 # For republicans and democrats
 for c in ["democrats", "republicans"]:
@@ -43,7 +48,7 @@ for c in ["democrats", "republicans"]:
         print(u"Downloading tweets for user \"{}\"".format(user))
         # Get statuses
         for status in api.user_timeline(screen_name=user, count=200):
-            tweet_text += status.text
+            tweet_text += unicode(status.text)
         # end for
         X.append(tweet_text)
         Y.append(c)
@@ -51,4 +56,14 @@ for c in ["democrats", "republicans"]:
     # end for
 # end for
 
-pickle.dump((X, Y), codecs.open(u"dataset.p", 'wb', encoding='utf-8'))
+# For each users
+for user in test:
+    tweet_text = u""
+    for status in api.user_timeline(screen_name=user, count=200):
+        tweet_text += unicode(status.text)
+    # end for
+    test_name.append(user)
+    test_X.append(tweet_text)
+# end for
+
+json.dump({'X': X, 'Y': Y, 'test_name': test_name, 'test_X': test_X}, codecs.open(u"dataset.json", 'wb', encoding='utf-8'))
