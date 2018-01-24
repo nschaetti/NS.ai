@@ -21,13 +21,6 @@ z = 0.5*x*x + x + 0.25*y*y - 2
 # Show
 print(z, z.grad_fn)
 
-# Compute gradient
-z.backward(retain_graph=True)
-
-# Print gradients
-print(x.grad)
-print(y.grad)
-
 # List of parameters
 parameters = list([x, y])
 
@@ -40,8 +33,17 @@ for i in range(10):
     for p in parameters:
         p.data.sub_(p.grad.data * learning_rate)
     # end for
-    print(x.data, x.grad)
-    print(y.data, y.grad)
-    print(z.data)
+
+    # Do backward pass
+    if i != 9:
+        z.backward(retain_graph=True)
+    else:
+        z.backward()
+    # end if
+
+    # Print gradients and value
+    print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0]))
+    print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0]))
+    print(u"z: {}".format(z.data))
     print(u"")
 # end for
