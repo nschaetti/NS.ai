@@ -29,13 +29,8 @@ print(u"z: {}".format(z.data[0]))
 # List of parameters
 parameters = list([x, y])
 
-# List of values
-x_values = list()
-y_values = list()
-
-# List of gradients
-x_gradients = list()
-y_gradients = list()
+# List of positions
+positions = list()
 
 # Do 10 steps
 for i in range(args.iterations):
@@ -52,10 +47,7 @@ for i in range(args.iterations):
     # end for
 
     # Print gradients and value
-    x_values.append(x.data[0])
-    y_values.append(y.data[0])
-    x_gradients.append(float(x.grad[0]))
-    y_gradients.append(float(y.grad[0]))
+    positions.append((x.data[0], y.data[0]))
     """print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0][0]))
     print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0][0]))
     print(u"")"""
@@ -65,14 +57,5 @@ for i in range(args.iterations):
     y.grad.fill_(0)
 # end for
 
-print(u"x values : {}".format(x_values))
-print(u"")
-
-print(u"y values : {}".format(y_values))
-print(u"")
-
-print(u"x gradients : {}".format(x_gradients))
-print(u"")
-
-print(u"y gradients : {}".format(y_gradients))
+print(u"Positions : {}".format(positions))
 print(u"")
