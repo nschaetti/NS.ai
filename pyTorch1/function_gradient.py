@@ -87,7 +87,7 @@ for j in range(51):
 # end for
 
 # Scatter points
-ax.scatter(x_values, y_values, z_values, c='r', marker='o')
+ax.scatter(x_values, y_values, z_values, c='r', marker='o', s=1)
 
 # Labels
 ax.set_xlabel('X')
@@ -95,7 +95,7 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
 # Plot a basic wireframe.
-ax.plot_wireframe(X, Y, Z, rstride=15, cstride=15)
+ax.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
 
 plt.show()
 
