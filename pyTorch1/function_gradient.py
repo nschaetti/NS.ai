@@ -22,8 +22,8 @@ parser.add_argument(u"--y", type=float, default=1.0)
 args = parser.parse_args()
 
 # Create two variables
-x = Variable(torch.ones(1), requires_grad=True)
-y = Variable(torch.ones(1), requires_grad=True)
+x = Variable(torch.ones(args.x), requires_grad=True)
+y = Variable(torch.ones(args.y), requires_grad=True)
 
 # Function to derive
 z = torch.pow(x, 2).mul(0.5) + x + torch.pow(y, 2).mul(0.25) - 2
