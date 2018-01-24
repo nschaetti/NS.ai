@@ -9,6 +9,7 @@ from torch.autograd import Variable
 import argparse
 from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
+import math
 
 # Arguments
 parser = argparse.ArgumentParser(prog=u"function_gradient")
