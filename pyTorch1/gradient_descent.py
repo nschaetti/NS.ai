@@ -7,6 +7,7 @@ import argparse
 import matplotlib.pyplot as plt
 import math
 import numpy as np
+from mpl_toolkits.mplot3d import axes3d, Axes3D
 from matplotlib import cm
 
 
@@ -18,7 +19,7 @@ def func(xv, yv):
     :param yv: Y
     :return: Z
     """
-    return 0.5*math.pow(xv, 2) + x + 0.25*math.pow(yv, 4) - 2
+    return 0.5*math.pow(xv, 2) + xv + 0.25*math.pow(yv, 2) - 2
 # end func
 
 
@@ -35,15 +36,12 @@ x = args.x
 y = args.y
 
 # List of positions
-x_values = list([args.x])
-y_values = list([args.y])
-z_values = list([0.5*args.x**2 + x + 0.25*args.y**2 - 2])
+x_values = list([x])
+y_values = list([y])
+z_values = list([func(x, y)])
 
 # Do 10 steps
 for i in range(args.iterations):
-    # Z value at pos x,y
-    z = func(x, y)
-
     # Compute gradient
     x_grad = x + 1
     y_grad = 0.5 * y
@@ -55,7 +53,7 @@ for i in range(args.iterations):
     # Print gradients and value
     x_values.append(x)
     y_values.append(y)
-    z_values.append(z)
+    z_values.append(func(x, y))
 # end for
 
 # Plot
@@ -78,7 +76,7 @@ for j in range(51):
     for i in range(51):
         x_pos = X[j, i]
         y_pos = Y[j, i]
-        Z[j, i] = 0.5*math.pow(x_pos, 2) + x_pos + 0.25*math.pow(y_pos, 2) - 2
+        Z[j, i] = func(x_pos,y_pos)
     # end for
 # end for
 
