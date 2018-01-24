@@ -71,8 +71,8 @@ print(u"")
 print(u"y values : {}".format(y_values))
 print(u"")
 
-"""print(u"x gradients : {}".format(x_gradients))
+print(u"x gradients : {}".format(x_gradients))
 print(u"")
 
 print(u"y gradients : {}".format(y_gradients))
-print(u"")"""
+print(u"")
