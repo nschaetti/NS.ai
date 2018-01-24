@@ -97,6 +97,10 @@ ax.set_zlabel('Z')
 # Plot a basic surface.
 ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True)
 
+# Ensure that the next plot doesn't overwrite the first plot
+ax = plt.gca()
+ax.hold(True)
+
 # Scatter points
 ax.scatter(x_values, y_values, z_values, c='b', marker='o', s=2.0)
 ax.scatter([-1], [0], [-2], c='g', marker='o', s=4.0)
