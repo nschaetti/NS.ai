@@ -54,8 +54,8 @@ for i in range(args.iterations):
     # Print gradients and value
     x_values.append(x.data[0])
     y_values.append(y.data[0])
-    x_gradients.append(int(x.grad[0]))
-    y_gradients.append(int(y.grad[0]))
+    x_gradients.append(float(x.grad[0]))
+    y_gradients.append(float(y.grad[0]))
     """print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0][0]))
     print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0][0]))
     print(u"")"""
