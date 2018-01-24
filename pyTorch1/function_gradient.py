@@ -40,8 +40,8 @@ for i in range(10):
     # end for
 
     # Print gradients and value
-    print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0]))
-    print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0]))
+    print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0][0]))
+    print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0][0]))
     print(u"z: {}".format(z.data[0]))
     print(u"")
 
