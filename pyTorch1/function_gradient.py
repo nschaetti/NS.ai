@@ -6,6 +6,12 @@
 #from __future__ import print_function
 import torch
 from torch.autograd import Variable
+import argparse
+
+# Arguments
+parser = argparse.ArgumentParser(prog=u"function_gradient")
+parser.add_argument(u"--learning-rate", type=float, required=True)
+parser.add_argument(u"--iteration", type=int, required=True)
 
 # Create two variables
 x = Variable(torch.ones(1), requires_grad=True)
