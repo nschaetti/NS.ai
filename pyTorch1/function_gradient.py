@@ -95,7 +95,7 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
 # Plot a basic surface.
-ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True, alpha=0.5)
+ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True, alpha=0.8)
 
 # Scatter points
 ax.plot(x_values, y_values, z_values, label='Learning curve', color='lightblue')
