@@ -7,6 +7,7 @@
 import torch
 from torch.autograd import Variable
 import argparse
+import matplotlib.pyplot as plt
 
 # Arguments
 parser = argparse.ArgumentParser(prog=u"function_gradient")
@@ -30,7 +31,8 @@ print(u"z: {}".format(z.data[0]))
 parameters = list([x, y])
 
 # List of positions
-positions = list()
+x_values = list()
+y_values = list()
 
 # Do 10 steps
 for i in range(args.iterations):
@@ -47,7 +49,8 @@ for i in range(args.iterations):
     # end for
 
     # Print gradients and value
-    positions.append((x.data[0], y.data[0]))
+    x_values.append(x.data[0])
+    y_values.append(y.data[0])
     """print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0][0]))
     print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0][0]))
     print(u"")"""
@@ -57,5 +60,7 @@ for i in range(args.iterations):
     y.grad.fill_(0)
 # end for
 
-print(u"Positions : {}".format(positions))
-print(u"")
+# Plot
+plt.plot(x_values, y_values, 'ro')
+plt.axis([-2.5, 2.5, -2.5, 2.5])
+plt.show()
