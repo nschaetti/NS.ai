@@ -29,6 +29,10 @@ print(u"z: {}".format(z.data[0]))
 # List of parameters
 parameters = list([x, y])
 
+# List of values
+x_values = list()
+y_values = list()
+
 # Do 10 steps
 for i in range(args.iterations):
     # Do backward pass
@@ -44,11 +48,16 @@ for i in range(args.iterations):
     # end for
 
     # Print gradients and value
-    print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0][0]))
+    x_values.append(x.data[0])
+    y_values.append(y.data[0])
+    """print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0][0]))
     print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0][0]))
-    print(u"")
+    print(u"")"""
 
     # Zero gradients
     x.grad.fill_(0)
     y.grad.fill_(0)
 # end for
+
+print(u"x values : {}".format(x_values))
+print(u"y values : {}".format(y_values))
