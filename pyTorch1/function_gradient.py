@@ -99,8 +99,8 @@ ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
-# Plot a basic wireframe.
-ax.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
+# Plot a basic surface.
+ax.plot_surface(X, Y, Z, color='b')
 
 plt.show()
 
