@@ -11,6 +11,7 @@ from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 import math
 import numpy as np
+from matplotlib import cm
 
 # Arguments
 parser = argparse.ArgumentParser(prog=u"function_gradient")
