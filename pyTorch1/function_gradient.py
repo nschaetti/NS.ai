@@ -98,7 +98,7 @@ ax.set_zlabel('Z')
 ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True, alpha=0.5)
 
 # Scatter points
-ax.plot(x_values, y_values, z_values, label='Learning curve', color='lightblue', size=2)
+ax.plot(x_values, y_values, z_values, label='Learning curve', color='lightblue')
 
 plt.show()
 
