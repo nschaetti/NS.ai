@@ -95,10 +95,10 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
 # Plot a basic surface.
-ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True, alpha=0.5)
+ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True, alpha=0.8)
 
 # Scatter points
-ax.scatter(x_values, y_values, z_values, c='b', marker='o', s=2.0)
+ax.scatter(x_values, y_values, z_values, c='lightblue', marker='o', s=2.0)
 ax.scatter([-1], [0], [-2], color='g', marker='o', s=4.0)
 
 plt.show()
