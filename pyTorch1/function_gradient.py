@@ -31,7 +31,7 @@ n_iteration = 20
 # Do 10 steps
 for i in range(n_iteration):
     # Do backward pass
-    if i != 9:
+    if i != n_iteration - 1:
         z.backward(retain_graph=True)
     else:
         z.backward()
