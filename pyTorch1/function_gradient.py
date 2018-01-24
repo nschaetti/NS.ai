@@ -98,7 +98,7 @@ ax.set_zlabel('Z')
 ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True)
 
 # Scatter points
-ax.scatter(x_values, y_values, z_values, c='r', marker='o', s=2.0)
+ax.scatter(x_values, y_values, z_values, c='b', marker='o', s=2.0)
 ax.scatter([-1], [0], [-2], c='g', marker='o', s=4.0)
 
 plt.show()
