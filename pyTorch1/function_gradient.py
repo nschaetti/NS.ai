@@ -7,6 +7,7 @@
 import torch
 from torch.autograd import Variable
 import argparse
+from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 
 # Arguments
@@ -33,6 +34,7 @@ parameters = list([x, y])
 # List of positions
 x_values = list()
 y_values = list()
+z_values = list()
 
 # Do 10 steps
 for i in range(args.iterations):
@@ -51,9 +53,7 @@ for i in range(args.iterations):
     # Print gradients and value
     x_values.append(x.data[0])
     y_values.append(y.data[0])
-    """print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0][0]))
-    print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0][0]))
-    print(u"")"""
+    z_values.append(0.5*math.pow(x.data[0], 2) + x.data[0] + 0.25*math.pow(y.data[0], 2) - 2)
 
     # Zero gradients
     x.grad.fill_(0)
@@ -61,7 +61,14 @@ for i in range(args.iterations):
 # end for
 
 # Plot
-plt.plot(x_values, y_values, 'ro')
-plt.plot([-2.0], [0.0], 'bo')
-plt.axis([-2.5, 2.5, -2.5, 2.5])
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Grab some test data.
+X, Y, Z = axes3d.get_test_data(0.05)
+
+# Plot a basic wireframe.
+ax.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
+
 plt.show()
+
