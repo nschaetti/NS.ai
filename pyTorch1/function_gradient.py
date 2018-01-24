@@ -10,6 +10,7 @@ import argparse
 from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 import math
+import numpy as np
 
 # Arguments
 parser = argparse.ArgumentParser(prog=u"function_gradient")
@@ -65,11 +66,25 @@ for i in range(args.iterations):
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-# Grab some test data.
-X, Y, Z = axes3d.get_test_data(0.05)
-print(X)
-print(Y)
-print(Z)
+# X position
+X = np.zeros((51, 51))
+X[:, ] = np.arange(-2.5, 2.6, 0.1)
+
+# Y position
+Y = np.zeros((51, 51))
+for i in range(51):
+    Y[i, :] = X[0, i]
+# end for
+
+# Compute Z
+Z = np.zeros((51, 51))
+for j in range(51):
+    for i in range(51):
+        x_pos = X[j, i]
+        y_pos = Y[j, i]
+        Z[j, i] = 0.5*math.pow(x_pos, 2) + x_pos + 0.25*math.pow(y_pos, 2) - 2
+    # end for
+# end for
 
 # Plot a basic wireframe.
 ax.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
