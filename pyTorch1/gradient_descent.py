@@ -21,6 +21,7 @@ def func(xv, yv):
     return 0.5*math.pow(xv, 2) + x + 0.25*math.pow(yv, 4) - 2
 # end func
 
+
 # Arguments
 parser = argparse.ArgumentParser(prog=u"function_gradient")
 parser.add_argument(u"--learning-rate", type=float, required=True)
