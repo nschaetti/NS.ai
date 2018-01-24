@@ -11,15 +11,13 @@ from torch.autograd import Variable
 x = Variable(torch.ones(1), requires_grad=True)
 y = Variable(torch.ones(1), requires_grad=True)
 
-# Show
-print(x)
-print(y)
-
 # Function to derive
 z = 0.5*x*x + x + 0.25*y*y - 2
 
-# Show
-print(z, z.grad_fn)
+# Print gradients and value
+print(u"x: {}".format(x.data[0]))
+print(u"y: {}".format(y.data[0]))
+print(u"z: {}".format(z.data[0]))
 
 # List of parameters
 parameters = list([x, y])
@@ -44,6 +42,6 @@ for i in range(10):
     # Print gradients and value
     print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0]))
     print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0]))
-    print(u"z: {}".format(z.data))
+    print(u"z: {}".format(z.data[0]))
     print(u"")
 # end for
