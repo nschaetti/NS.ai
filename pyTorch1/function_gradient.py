@@ -32,9 +32,9 @@ z = torch.pow(x, 2).mul(0.5) + x + torch.pow(y, 2).mul(0.25) - 2
 parameters = list([x, y])
 
 # List of positions
-x_values = list()
-y_values = list()
-z_values = list()
+x_values = list([args.x])
+y_values = list([args.y])
+z_values = list([0.5*args.x**2 + x + 0.25*args.y**2 - 2])
 
 # Do 10 steps
 for i in range(args.iterations):
