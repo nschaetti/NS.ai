@@ -23,7 +23,7 @@ x = Variable(torch.ones(1), requires_grad=True)
 y = Variable(torch.ones(1), requires_grad=True)
 
 # Function to derive
-z = 0.5*x*x + x + 0.25*y*y - 2
+z = torch.pow(x, 2).mul(0.5) + x + torch.pow(y, 2).mul(0.25) - 2
 
 # Print gradients and value
 print(u"x: {}".format(x.data[0]))
