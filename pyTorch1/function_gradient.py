@@ -62,5 +62,6 @@ for i in range(args.iterations):
 
 # Plot
 plt.plot(x_values, y_values, 'ro')
+plt.plot([-2.0], [0.0], 'bo')
 plt.axis([-2.5, 2.5, -2.5, 2.5])
 plt.show()
