@@ -25,8 +25,11 @@ parameters = list([x, y])
 # Learning rate
 learning_rate = 0.01
 
+# Number of pass
+n_iteration = 20
+
 # Do 10 steps
-for i in range(10):
+for i in range(n_iteration):
     # Do backward pass
     if i != 9:
         z.backward(retain_graph=True)
@@ -42,7 +45,6 @@ for i in range(10):
     # Print gradients and value
     print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0][0]))
     print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0][0]))
-    print(u"z: {}".format(z.data[0]))
     print(u"")
 
     # Zero gradients
