@@ -44,4 +44,8 @@ for i in range(10):
     print(u"y: {}, dz/dy: {}".format(y.data[0], y.grad[0]))
     print(u"z: {}".format(z.data[0]))
     print(u"")
+
+    # Zero gradients
+    x.grad.fill_(0)
+    y.grad.fill_(0)
 # end for
