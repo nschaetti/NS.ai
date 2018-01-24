@@ -89,10 +89,10 @@ for j in range(51):
 # end for
 
 # Scatter points
-ax.scatter(x_values, y_values, z_values, c='r', marker='o', s=1)
+ax.scatter(x_values, y_values, z_values, c='r', marker='o', s=2.0)
 
 # Scatter optimim point
-ax.scatter([-1], [0], [-2], c='g', marker='o', s=2.0)
+ax.scatter([-1], [0], [-2], c='g', marker='o', s=4.0)
 
 # Labels
 ax.set_xlabel('X')
@@ -100,7 +100,7 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
 # Plot a basic surface.
-ax.plot_surface(X, Y, Z, color='b')
+ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=True)
 
 plt.show()
 
