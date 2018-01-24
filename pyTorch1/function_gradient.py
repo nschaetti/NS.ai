@@ -29,17 +29,17 @@ learning_rate = 0.01
 
 # Do 10 steps
 for i in range(10):
-    # For each parameters
-    for p in parameters:
-        p.data.sub_(p.grad.data * learning_rate)
-    # end for
-
     # Do backward pass
     if i != 9:
         z.backward(retain_graph=True)
     else:
         z.backward()
     # end if
+
+    # For each parameters
+    for p in parameters:
+        p.data.sub_(p.grad.data * learning_rate)
+    # end for
 
     # Print gradients and value
     print(u"x: {}, dz/dx: {}".format(x.data[0], x.grad[0]))
