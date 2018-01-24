@@ -89,6 +89,9 @@ for j in range(51):
 # Scatter points
 ax.scatter(x_values, y_values, z_values, c='r', marker='o', s=1)
 
+# Scatter optimim point
+ax.scatter([-2], [0], [-2], c='g', marker='o', s=1.5)
+
 # Labels
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
