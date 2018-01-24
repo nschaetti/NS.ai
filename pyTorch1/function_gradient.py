@@ -16,6 +16,8 @@ import numpy as np
 parser = argparse.ArgumentParser(prog=u"function_gradient")
 parser.add_argument(u"--learning-rate", type=float, required=True)
 parser.add_argument(u"--iterations", type=int, required=True)
+parser.add_argument(u"--x", type=float, default=1.0)
+parser.add_argument(u"--y", type=float, default=1.0)
 args = parser.parse_args()
 
 # Create two variables
@@ -90,7 +92,7 @@ for j in range(51):
 ax.scatter(x_values, y_values, z_values, c='r', marker='o', s=1)
 
 # Scatter optimim point
-ax.scatter([-2], [0], [-2], c='g', marker='o', s=1.5)
+ax.scatter([-1], [0], [-2], c='g', marker='o', s=2.0)
 
 # Labels
 ax.set_xlabel('X')
