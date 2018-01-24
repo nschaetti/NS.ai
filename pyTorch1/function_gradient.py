@@ -11,7 +11,8 @@ import argparse
 # Arguments
 parser = argparse.ArgumentParser(prog=u"function_gradient")
 parser.add_argument(u"--learning-rate", type=float, required=True)
-parser.add_argument(u"--iteration", type=int, required=True)
+parser.add_argument(u"--iterations", type=int, required=True)
+args = parser.parse_args()
 
 # Create two variables
 x = Variable(torch.ones(1), requires_grad=True)
@@ -28,16 +29,10 @@ print(u"z: {}".format(z.data[0]))
 # List of parameters
 parameters = list([x, y])
 
-# Learning rate
-learning_rate = 0.01
-
-# Number of pass
-n_iteration = 20
-
 # Do 10 steps
-for i in range(n_iteration):
+for i in range(args.iterations):
     # Do backward pass
-    if i != n_iteration - 1:
+    if i != args.iterations - 1:
         z.backward(retain_graph=True)
     else:
         z.backward()
@@ -45,7 +40,7 @@ for i in range(n_iteration):
 
     # For each parameters
     for p in parameters:
-        p.data.sub_(p.grad.data * learning_rate)
+        p.data.sub_(p.grad.data * args.learning_rate)
     # end for
 
     # Print gradients and value
