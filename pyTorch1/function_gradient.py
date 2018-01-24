@@ -28,11 +28,6 @@ y = Variable(torch.zeros(1).fill_(args.y), requires_grad=True)
 # Function to derive
 z = torch.pow(x, 2).mul(0.5) + x + torch.pow(y, 2).mul(0.25) - 2
 
-# Print gradients and value
-print(u"x: {}".format(x.data[0]))
-print(u"y: {}".format(y.data[0]))
-print(u"z: {}".format(z.data[0]))
-
 # List of parameters
 parameters = list([x, y])
 
@@ -95,7 +90,7 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
 # Plot a basic surface.
-ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True, alpha=0.8)
+ax.plot_surface(X, Y, Z, cmap=cm.hot, linewidth=0, antialiased=True, alpha=1.0)
 
 # Scatter points
 ax.plot(x_values, y_values, z_values, label='Learning curve', color='lightblue')
