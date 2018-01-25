@@ -25,7 +25,7 @@ c = 2
 v = 8
 
 # Number of samples
-n_samples = 20
+n_samples = 50
 
 # Generate samples
 X = np.zeros(n_samples)
@@ -42,6 +42,7 @@ for i in range(n_samples):
 
 # Linear layer
 linear = nn.Linear(1, 1, bias=True)
+linear.cuda()
 
 # Test sample
 """x_target = 4
@@ -85,12 +86,12 @@ print(u"c grad after backward : {}".format(linear.bias.grad))"""
 optimizer = optim.SGD(linear.parameters(), lr=learning_parameters)
 
 # Loop over the data set
-for epoch in range(1000):
+for epoch in range(500):
     # Inputs and outputs (n_samples * in_features)
     inputs, outputs = torch.Tensor(X).unsqueeze(1), torch.Tensor(Y).unsqueeze(1)
 
     # To variable
-    inputs, outputs = Variable(inputs), Variable(outputs)
+    inputs, outputs = Variable(inputs.cuda()), Variable(outputs.cuda())
 
     # Zero param gradients
     optimizer.zero_grad()
