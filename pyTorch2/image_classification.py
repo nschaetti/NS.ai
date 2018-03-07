@@ -104,6 +104,7 @@ for epoch in range(n_iterations):
 
         # Forward
         outputs = net(inputs)
+
         loss = criterion(outputs, labels)
 
         # Backward
@@ -123,11 +124,6 @@ for epoch in range(n_iterations):
 
         # Add correctly classified images
         success += (predicted == labels.data).sum()
-
-        # Print loss
-        """if i % 999 == 0:
-            print(u"Loss : {}".format(loss.data[0]))
-        # end if"""
     # end for
     train_accuracy = 100.0 * success / total
 
