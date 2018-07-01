@@ -8,7 +8,6 @@ import torchvision
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 import numpy as np
-from modules.Net import Net
 import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
@@ -22,23 +21,26 @@ batch_size = 4
 
 # Transformation to tensor and normalization
 transform = transforms.Compose(
-    [transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+    [
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+    ]
 )
 
 # Download the training set
 trainset = torchvision.datasets.FashionMNIST(root='./data', train=True, download=True, transform=transform)
 
 # Training set loader
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=False, num_workers=2)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=False)
 
 # Test set
 testset = torchvision.datasets.FashionMNIST(root='./data', train=False, download=True, transform=transform)
 
 # Test set loader
-testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=2)
+testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False)
 
 
-# Function to show an image
+# Function to show images
 def imshow(img):
     img = img / 2 + 0.5
     npimg = img.numpy()
@@ -50,10 +52,10 @@ def imshow(img):
 # Classes
 classes = ('T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot')
 
-# Dataset as iterator
+# Data set as iterator
 dataiter = iter(trainloader)
 
-# Get next batch
+#Get next batch
 images, labels = dataiter.next()
 
 # Show images
@@ -71,7 +73,7 @@ criterion = nn.CrossEntropyLoss()
 # Learning rate
 learning_rate = 0.001
 
-# Stochastic Gradient Descent
+# Stochastic gradient descent
 optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0.9)
 
 # Nb iterations
@@ -94,10 +96,10 @@ for epoch in range(n_iterations):
     for i, data in enumerate(trainloader, 0):
         # Get the inputs and labels
         inputs, labels = data
-
+        print(inputs.size())
+        print(labels)
         # To variable
         inputs, labels = Variable(inputs.cuda()), Variable(labels.cuda())
-        # inputs, labels = Variable(inputs), Variable(labels)
 
         # Put grad to zero
         optimizer.zero_grad()
@@ -105,6 +107,7 @@ for epoch in range(n_iterations):
         # Forward
         outputs = net(inputs)
 
+        # Loss
         loss = criterion(outputs, labels)
 
         # Backward
@@ -134,10 +137,10 @@ for epoch in range(n_iterations):
         # To variable
         inputs, labels = Variable(inputs.cuda()), Variable(labels.cuda())
 
-        # Neural net's output
+        # Neural net's outputs
         outputs = net(inputs)
 
-        # Take the max is predicted
+        # Take the max as predicted
         _, predicted = torch.max(outputs.data, 1)
 
         # Add to total
@@ -147,13 +150,13 @@ for epoch in range(n_iterations):
         success += (predicted == labels.data).sum()
     # end for
 
-    # Print average loss
+    # print average loss and accuracies
     print(u"Epoch {}, average loss {}, train accuracy {}, test accuracy {}".format(
-        epoch, average_loss / n_batches,
+        epoch,
+        average_loss / n_batches,
         train_accuracy,
         100.0 * success / total
-        )
-    )
+    ))
 
     # Save
     train_accuracies[epoch] = train_accuracy
