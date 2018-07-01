@@ -60,8 +60,8 @@ images, labels = dataiter.next()
 
 # Show images
 n_batches = len(dataiter)
-print(u"First 4 labels {}".format([classes[labels[j]] for j in range(4)]))
-imshow(torchvision.utils.make_grid(images))
+# print(u"First 4 labels {}".format([classes[labels[j]] for j in range(4)]))
+# imshow(torchvision.utils.make_grid(images))
 
 # Our neural net
 net = Net()
