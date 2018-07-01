@@ -7,6 +7,7 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
+from modules import Net
 import numpy as np
 import torch.nn as nn
 import torch.optim as optim
